@@ -20,11 +20,11 @@
 
                         cursor = db.cursor()
 
-                            sql = """ SELECT * FROM states
-                                      WHERE name LIKE BINARY '{}'
-                                                ORDER BY id ASC """.format(sys.argv[4])
+                            sql = """SELECT * FROM states
+                                      WHERE name = %s
+                                                ORDER BY id ASC"""
 
-                                                    cursor.execute(sql)
+                                                    cursor.execute(sql, (sys.argv[4],))
 
                                                         data = cursor.fetchall()
 
